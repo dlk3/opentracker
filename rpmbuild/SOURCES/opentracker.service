@@ -1,0 +1,10 @@
+[Unit]
+Description=Opentracker Bittorent Tracker
+
+[Service]
+ExecStart=/usr/bin/opentracker -f /etc/opentracker.conf
+Restart=always
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target

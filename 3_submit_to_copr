@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+if [ "$1" == "" ]; then
+  echo "Please specify the path for the SRPM file you wish to submit to COPR for building"
+  exit 1
+fi
+
+copr-cli build --chroot epel-8-x86_64 --chroot epel-9-x86_64 --chroot fedora-39-x86_64 --chroot fedora-40-x86_64 --chroot fedora-rawhide-x86_64 rpms "$1"

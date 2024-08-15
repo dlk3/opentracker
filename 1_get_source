@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+VERSION=$(cat ~/src/opentracker/rpmbuild/SPECS/opentracker.spec | grep ^Version: | awk '{print $2}')
+rm -fr /tmp/opentracker-${VERSION} &>/dev/null
+mkdir /tmp/opentracker-${VERSION}
+pushd /tmp/opentracker-${VERSION} &>/dev/null
+cvs -d :pserver:cvs@cvs.fefe.de:/cvs -z9 co libowfat
+git clone git://erdgeist.org/opentracker
+cd /tmp
+tar -zcf ~/src/opentracker/rpmbuild/SOURCES/opentracker-${VERSION}.tar.gz opentracker-${VERSION}
+popd &>/dev/null
+rm -fr /tmp/opentracker-${VERSION} &>/dev/null
